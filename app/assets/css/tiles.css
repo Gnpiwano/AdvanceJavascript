@@ -1,0 +1,101 @@
+tile {   
+    background-image: url(../images/tiles.png);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    
+    height: 88px;
+    width: 64px;
+    position: absolute;
+    background-color: blueviolet;
+}
+
+/*
+    position: absolute;
+    background-color: aquamarine;
+    height: 102px;
+    width: 60;
+*/
+
+/*
+.block1 {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-color: lightblue;
+}
+
+.block2 {
+    height: 50px;
+    width: 50px;
+    background-color: lightcoral;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 25px;
+}
+*/
+
+/* Bamboo */
+
+.Bamboo1 { background-position: 0px -0px; }
+
+.Bamboo2 { background-position: 0px -88px; }
+
+.Bamboo3 { background-position: 0px -176px; }
+
+.Bamboo4 { background-position: 0px -264px; }
+
+.Bamboo5 { background-position: 0px -352px; }
+
+.Bamboo6 { background-position: 0px -440px; }
+
+.Bamboo7 { background-position: 0px -528px; }
+
+.Bamboo8 { background-position: 0px -616px; }
+
+.Bamboo9 { background-position: 0px -704px; }
+
+/* dragon */
+
+.character1 { background-position: 0px -792px; }
+
+.character2 { background-position: 0px -880px; }
+
+.character3 { background-position: 0px -968px; }
+
+.character4 { background-position: 0px -1056px; }
+
+.character5 { background-position: 0px -1144px; }
+
+.character6 { background-position: 0px -1232px; }
+
+.character7 { background-position: 0px -1320px; }
+
+.character8 { background-position: 0px -1408px; }
+
+.character9 { background-position: 0px -1496px; }
+
+/* circle */
+
+.circle1 { background-position: 0px -1584px; }
+
+.circle2 { background-position: 0px -1672px; }
+
+.circle3 { background-position: 0px -1760px; }
+
+.circle4 { background-position: 0px -1848px; }
+
+.circle5 { background-position: 0px -1936px; }
+
+.circle6 { background-position: 0px -2024px; }
+
+.circle7 { background-position: 0px -2112px; }
+
+.circle8 { background-position: 0px -2200px; }
+
+.circle9 { background-position: 0px -2288px; }
+
+/* Dragon */
+.dragongreen {background-position: 0px -2376px; }
+.dragonwhite {background-position: 0px -2464px; }
+.dragonred {background-position: 0px -2552px; }
+

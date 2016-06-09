@@ -1,0 +1,33 @@
+gameboard {
+    height: 400px;
+    width: 800px;
+    position: fixed;
+    border: 1px solid blue;
+}
+
+
+.bin1 {
+    height: 250px;
+    width: 500px;
+    position:fixed;
+}
+
+.bin2 {
+    height: 250px;
+    width: 500px;
+    position:relative;
+}
+.borders {
+    border: 2px solid black;
+}
+
+
+.block1 {
+    background-image: url(../images/tiles.png);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    
+    height: 80px;
+    width: 64px;
+    position: absolute;
+}

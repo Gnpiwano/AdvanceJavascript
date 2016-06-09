@@ -1,0 +1,44 @@
+<div layout='column' layout-fill>
+    <md-toolbar layout="row" layout-align="center center" class='md-medium-tall' style="background-color:#2196f3">
+        <div>
+            <p style="color:#ffffff">Majong</p>
+        </div>
+    </md-toolbar>
+    
+    
+    <md-content flex class='md-padding'>
+        <div layout="column" layout-align="center center" flex>
+          <md-whiteframe class="md-whiteframe-3dp" layout="column" style="width: 40em;">
+                <div layout="column" flex style=" background-color: #2196f3; color: white;">
+                    <h4 style="margin:1em;">Project:</h4>
+                    <p style="margin:1em;">Majong Advance Javascript</p>
+                    <h4 style="margin:1em;"> Login with Avans OAuth</h4>
+                </div>
+                <div layout="row" style=" background-color: #2196f3; color: white;" ng-show="ctrl.accountVisible">
+                    <md-list >
+                        <md-list-item class="md-3-line">
+                            <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
+                            <div class="md-list-item-text" layout="row" ng-click="">
+                                <div layout="column" >
+                                    <h3 style="color: #ffffff">{{ ctrl.accountName }}</h3>
+                                </div>
+                                <div flex="10">
+                                </div>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+                <md-divider></md-divider>
+                <div layout="row" layout-align="space-around center" flex="20" style="background-color: #f5f5f5">
+                    <md-button ng-click="ctrl.login()">Login</md-button>
+                    <md-button ng-click="ctrl.logout()">Logout</md-button>
+                </div>
+          </md-whiteframe>
+        </div>
+    </md-content>  
+</div>
+
+<!--
+
+http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://localhost:3000%2F%23%2Flogin
+

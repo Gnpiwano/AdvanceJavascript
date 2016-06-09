@@ -1,0 +1,29 @@
+<md-toolbar flex ng-init='init()' layout-align="center center"  class='md-medium-tall' style="background-color:#2196f3">
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+        <md-button class="md-icon-button " aria-label="Menu" ng-click="menu.openMenu()">
+            <i class="material-icons md-48 ">view_headline</i>
+        </md-button>
+        <p>Majong</p>
+        <div flex="5">
+            <md-button style="color: white; font-size: 200%;" ng-click="ctrl.add()">
+                <i class="material-icons">add</i>
+            </md-button>
+        </div>
+    </div>
+</md-toolbar>
+
+<md-sidenav class="md-sidenav-left" md-component-id="left" >
+    <md-toolbar style="background-color:#2196f3">
+        <h1 class="md-toolbar-tools" > Settings </h1>
+    </md-toolbar>
+    <md-list ng-cloak>
+        <md-list-item ng-click="menu.showOpenGames()">
+            <i class="material-icons">credit_card</i>
+            <p>Open Games</p>
+        </md-list-item>
+        <md-list-item ng-click="menu.showClosedGames()">
+            <i class="material-icons">credit_card</i>
+            <p>Closed Games</p>
+        </md-list-item>
+    </md-list>
+</md-sidenav>
