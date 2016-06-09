@@ -7,7 +7,18 @@ require('angular-ui-router/release/angular-ui-router.min');
 require('angular-route/angular-route.min');
 
 //Create app
-var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute']);
+var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
+    .directive('tile', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'assets/html/tile.html'
+        };
+    }).directive('gameboard', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'assets/html/gameboard.html'
+        };
+    });
 
 // create controllers
 var loginController = require('./components/login/login-controller');
@@ -19,19 +30,14 @@ app.controller('mainController', mainController);
 var testController = require('./components/tests/test-controller');
 app.controller('testController', testController);
 
+var testController = require('./components/tests/test-controller');
+app.controller('testController', testController);
+
 var boardController = require('./components/board/board-controller');
-app.controller('boardController', boardController)
-.directive('tile', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'assets/html/tile.html'
-  };
-}).directive('gameboard', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'assets/html/gameboard.html'
-  };
-});
+app.controller('boardController', boardController); //boardPlayingController
+
+var boardPlayingController = require('./components/board/playingBoard/playingboard-controller');
+app.controller('boardPlayingController', boardPlayingController); //boardPlayingController
 
 
 // create services
@@ -95,7 +101,9 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
     .state("board.playingBoard", {
         url: "",
         templateUrl: "../../components/board/playingBoard/index.html",
-        title: "Board Page"
+        title: "Board Page",
+        controller: "boardPlayingController",
+        controllerAs: "ctrl"
     });   
 }]);
 

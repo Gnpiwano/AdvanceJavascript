@@ -1,8 +1,7 @@
 gameboard {
-    height: 400px;
-    width: 800px;
     position: fixed;
-    border: 1px solid blue;
+    margin-left: auto;
+    margin-right:auto;
 }
 
 

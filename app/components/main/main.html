@@ -36,7 +36,7 @@
             <md-list-item class="md-3-line" ng-repeat="game in ctrl.shared.currentGames">
                 <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
                 <div class="md-list-item-text" layout="row">
-                    <a ui-sref="board({ boardId: game._id })">gotoTest</a>
+                    <a ui-sref="board({ boardId: game._id })">gotoBoard</a>
 
                     <div layout="column" flex ng-click="ctrl.goToListItem(game)">
                         <h3>{{ game.createdBy.name }}</h3>
