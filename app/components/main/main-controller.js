@@ -1,18 +1,23 @@
 module.exports = function($scope, $location, menuService, authService, gameService, sharedService, $state) {
-    
-        $location.$$search = {};    
-        $location.search('key', null)
-        var _th = this;
-        $scope.menu = menuService;
-        this.shared = sharedService;
 
+        var _th = this;
+
+        $scope.menu = menuService;
+        sharedService.loading = true;
+        this.shared = sharedService;
         this.listState = "playing";
         this.gameOwner = '';
 
         $scope.init = function () {
+            $location.$$search = {};
+            $location.search('key', null)
+
+            if(authService.checkIfUserIsLogedIn()) {
+                gameService.getAllGames();
+            }
         };
 
-        sharedService.loading = true;
+
     
         this.game = {};
     
@@ -39,20 +44,6 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             console.log("CreateNewGame");
             gameService.createGame(game);
             _th.showNewGame = false;
-            
-        }
-        
-        this.joinGame = function(game) {
-            console.log("JoinGame");
-            gameService.joinGame(game);
-        }
-        
-        this.startGame = function(game) {
-            console.log("startGame");
-            gameService.startGame(game._id);
-        }
-    
-        if(authService.checkIfUserIsLogedIn()) {
             gameService.getAllGames();
         }
     
@@ -64,6 +55,8 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             }
 
         }
+
+
         
         this.canStartGame = function(game) {
             if(game.createdBy._id == authService.login.username && game.state != "playing") {
@@ -77,5 +70,15 @@ module.exports = function($scope, $location, menuService, authService, gameServi
                 return true;
             }
             return false;
+        }
+
+        this.joinGame = function(game) {
+            console.log("JoinGame");
+            gameService.joinGame(game);
+        }
+
+        this.startGame = function(game) {
+            console.log("startGame");
+            gameService.startGame(game._id);
         }
 }

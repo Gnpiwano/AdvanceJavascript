@@ -29,15 +29,4 @@ module.exports = function($mdSidenav, $mdComponentRegistry, sharedService) {
     this.add = function() {
         console.log("TODO add toevoegen");
     }
-    
-    this.showClosedGames = function() {
-        console.log("closedgames set");
-        sharedService.currentGames = sharedService.closedGames;
-    }
-    
-    this.showOpenGames = function() {
-        console.log("opengames set");
-        sharedService.currentGames = sharedService.openGames;
-    }
-
 }

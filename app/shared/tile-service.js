@@ -5,6 +5,7 @@ module.exports = function(dataService,sharedService, authService) {
 
     this.matchTiles = function(gameid, id_tile1, id_tile_2) {
         console.log("matchTiles");
+        console.log("url: "+"/Games/"+gameid+"/Tiles/matches"+ "tile1Id:" + id_tile1 + " - tile2Id" +id_tile_2);
         dataService.postData("/Games/"+gameid+"/Tiles/matches", {tile1Id: id_tile1, tile2Id: id_tile_2});
         //dataService.getData("/Games/"+id+"/Tiles", completionHandler)
     }

@@ -36,19 +36,15 @@ module.exports = function(dataService, sharedService, authService) {
     }
 
    var setGames = function(response) {
+       sharedService.currentGames = [];
     for(i = 0; i < response.data.length ; i++ ) {
         var game = response.data[i];
         game.createName = game.createdBy._id;
 
         sharedService.currentGames.push(game);
-
     }
     sharedService.loading = false;
-       
     //localStorage.setItem("gameslist", JSON.stringify(sharedService.currentGames));
-
-        console.log(authService.login.username)
-        console.log(response.data);
    }
     
     this.getAllGames = function() {

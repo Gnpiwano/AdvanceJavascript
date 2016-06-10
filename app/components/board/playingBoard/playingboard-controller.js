@@ -26,6 +26,7 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
     
     var getMatchingTilesCompletionHandler = function(response) {
         sharedService.currentMatchingGameTiles = response.data;
+        console.log("data die je terug krijgt:" ,response);
         setupboard();
     }
     
@@ -62,12 +63,15 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
         })
     }
 
-    if(sharedService.currentGame._id != gameId) {
+
+
+    if(sharedService.currentGame._id == gameId) {
         sharedService.currentGame = null;
         sharedService.currentMatchingGameTiles = null;
         sharedService.currentGametiles = null;
         getData();
     }else {
+        alert(sharedService.currentGame._id +" - "+ gameId);
         setTimeout(function () {
             setupboard();
         }, 500);

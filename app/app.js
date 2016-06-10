@@ -93,6 +93,7 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                         }
 
                         if(sharedService.selectedTilesIds[0].name == sharedService.selectedTilesIds[1].name) {
+                            console.log("matchtiles wordt aangeroepen.");
                             document.getElementById(sharedService.selectedTilesIds[1].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[1].id));
                             document.getElementById(sharedService.selectedTilesIds[0].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[0].id));
                             tileService.matchTiles(sharedService.currentGame._id ,sharedService.selectedTilesIds[0].id, sharedService.selectedTilesIds[1].id);
