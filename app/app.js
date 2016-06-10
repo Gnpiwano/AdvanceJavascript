@@ -23,7 +23,6 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                     for(i = 0; i < sharedService.selectedTilesIds.length; i++) {
 
                        if(sharedService.selectedTilesIds[i].id == elementId) {
-                           console.log("check 2");
                            //remove id from selectedIds
                             sharedService.selectedTilesIds.splice(i, (i+1));
                            //remove class form element.
@@ -38,13 +37,10 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                     var leftNeighbour = false;
                     var rightNeigbour = false;
 
-                    console.log("x:"+elementX+ " - y:"+ elementY+ " - z:"+ elementZ);
-
                     for(i = 0; i < sharedService.currentGametiles.length; i++) {
                         var tile = sharedService.currentGametiles[i];
 
                         if((tile.xPos + 2) == 5) {
-                            console.log("otherTile x:" +tile.xPos, " - y:" + tile.yPos);
                         }
 
                         // er ligt een tegel bovenop de gene die je wil selecteren.
@@ -52,7 +48,6 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                         if(elementX == tile.xPos || elementX == (tile.xPos -1) || elementX == (tile.xPos +1) ) {
                             if(elementY == tile.yPos || elementY == (tile.yPos -1) || elementY == (tile.yPos +1) ) {
                                 if(tile.zPos > elementZ) {
-                                    console.log("for loop broken");
                                     canSelected = false;
                                     break;
                                 }
@@ -63,22 +58,16 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                         if(elementZ == tile.zPos) {
                             if(elementY == tile.yPos || elementY == (tile.yPos -1) || elementY == (tile.yPos +1)) {
                                 if((tile.xPos - 2) == elementX) {
-                                    console.log("rightNeigbour exist", tile);
                                     leftNeighbour = true;
                                 }
                                 if((tile.xPos - 1) == elementX) {
-                                    console.log("rightNeigbour exist", tile);
                                     leftNeighbour = true;
                                 }
 
                                 if((tile.xPos + 2) == elementX) {
-                                    console.log((tile.xPos + 2) +" - "+ elementX);
-                                    console.log("leftNeigbour exist", tile);
                                     rightNeigbour = true;
                                 }
                                 if((tile.xPos + 1) == elementX) {
-                                    console.log((tile.xPos + 2) +" - "+ elementX);
-                                    console.log("leftNeigbour exist", tile);
                                     rightNeigbour = true;
                                 }
                             }
@@ -106,17 +95,13 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                         if(sharedService.selectedTilesIds[0].name == sharedService.selectedTilesIds[1].name) {
                             document.getElementById(sharedService.selectedTilesIds[1].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[1].id));
                             document.getElementById(sharedService.selectedTilesIds[0].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[0].id));
-
-                            tileService.matchTiles(sharedService.selectedTilesIds[0].id, sharedService.selectedTilesIds[1].id);
-                            console.log("IDS " + sharedService.selectedTilesIds[0].id + " - " + sharedService.selectedTilesIds[1].id);
+                            tileService.matchTiles(sharedService.currentGame._id ,sharedService.selectedTilesIds[0].id, sharedService.selectedTilesIds[1].id);
                         }
 
                         //reset array met selectedTiles
                         sharedService.selectedTilesIds = [];
                     }
 
-                    //console.log( sharedService.currentGametiles );
-                    console.log("selectedTileIds",sharedService.selectedTilesIds);
                 });
             }
         }

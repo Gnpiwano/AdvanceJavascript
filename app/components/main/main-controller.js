@@ -48,12 +48,12 @@ module.exports = function($scope, $location, menuService, authService, gameServi
 
         }
         
-        this.goToListItem = function(game) {
-            sharedService.currentGame = game;
-            
-            $state.go('board.playingBoard');
-            //window.location.replace("#/board");
-        }
+        // this.goToListItem = function(game) {
+        //     sharedService.currentGame = game;
+        //
+        //     $state.go('board.playingBoard');
+        //     //window.location.replace("#/board");
+        // }
         
         this.canStartGame = function(game) {
             if(game.createdBy._id == authService.login.username && game.state != "playing") {

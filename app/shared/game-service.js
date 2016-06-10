@@ -6,9 +6,7 @@ module.exports = function(dataService, sharedService, authService) {
         console.log("GetGame1");
         if( completionHandler != undefined) {           
             dataService.getData("/Games/"+id, completionHandler )
-            console.log("GetGame2");
         } else {
-            console.log("GetGame3");
             dataService.getData("/Games/"+id, function(response) {
                 console.log("loggin game-service getGame() response.data:", response.data);
                 sharedService.currentGame = response.data
