@@ -5,7 +5,13 @@ module.exports = function($scope, $location, menuService, authService, gameServi
         var _th = this;
         $scope.menu = menuService;
         this.shared = sharedService;
-        $scope.listState = "playing"
+
+        this.listState = "playing";
+        this.gameOwner = '';
+
+        $scope.init = function () {
+        };
+
         sharedService.loading = true;
     
         this.game = {};
@@ -17,6 +23,17 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             {name : "Shanghai"}
         ];
 
+        this.changePlayingState = function (state) {
+            this.listState = state;
+        }
+
+        this.changePlayerGames = function (playerId) {
+            if (playerId == 'me') {
+                this.gameOwner = authService.login.username;
+            } else {
+                this.gameOwner = playerId;
+            }
+        }
         
         this.createNewGame = function(game) {
             console.log("CreateNewGame");
@@ -47,13 +64,6 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             }
 
         }
-        
-        // this.goToListItem = function(game) {
-        //     sharedService.currentGame = game;
-        //
-        //     $state.go('board.playingBoard');
-        //     //window.location.replace("#/board");
-        // }
         
         this.canStartGame = function(game) {
             if(game.createdBy._id == authService.login.username && game.state != "playing") {

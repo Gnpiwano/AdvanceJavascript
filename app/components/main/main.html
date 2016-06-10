@@ -1,6 +1,20 @@
 <div layout='column' layout-fill>
     <div ng-include="'assets/html/settings_menu.html'"></div>
-    
+    <div layout="row" style="color: #444444">
+        <div flex="50">
+            <h2 style="margin-left: 10px;">Player filter</h2>
+            <md-button ng-click="ctrl.changePlayerGames('me')"> My Games </md-button>
+            <md-button ng-click="ctrl.changePlayerGames('')"> Other </md-button>
+
+        </div>
+        <div flex="50">
+            <h2 style="margin-left: 10px;">State filter</h2>
+            <md-button ng-click="ctrl.changePlayingState('open')"> Open </md-button>
+            <md-button ng-click="ctrl.changePlayingState('playing')"> Spectate </md-button>
+            <md-button ng-click="ctrl.changePlayingState('finished')"> History </md-button>
+        </div>
+    </div>
+    <md-divider></md-divider>
     <md-content flex class='md-padding'>
         <md-list>
             <md-list-item class="md-3-line" ng-show="ctrl.showNewGame" layout="row">
@@ -33,7 +47,7 @@
                     <md-progress-circular md-mode="indeterminate" md-diameter="128"></md-progress-circular>
                 </div>
             </md-list-item>            
-            <md-list-item class="md-3-line" ng-repeat="game in ctrl.shared.currentGames">
+            <md-list-item class="md-3-line" ng-repeat="game in ctrl.shared.currentGames | filter:{state: ctrl.listState} | filter:{createName: ctrl.gameOwner}">
                 <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
                 <div class="md-list-item-text" layout="row">
                     <a></a>

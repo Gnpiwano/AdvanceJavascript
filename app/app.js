@@ -129,7 +129,10 @@ var boardController = require('./components/board/board-controller');
 app.controller('boardController', boardController); //boardPlayingController
 
 var boardPlayingController = require('./components/board/playingBoard/playingboard-controller');
-app.controller('boardPlayingController', boardPlayingController); //boardPlayingController
+app.controller('boardPlayingController', boardPlayingController);
+
+var detailboardController = require('./components/board/detailInfo/detailboard-controller');
+app.controller('detailboardController', detailboardController);
 
 
 // create services
@@ -191,7 +194,9 @@ app.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $ur
     .state("board.detailedInfo", {
         url: "",
         templateUrl: "../../components/board/detailInfo/index.html",
-        title: "Board Page"
+        title: "Board Page",
+        controller: "detailboardController",
+        controllerAs: "ctrl"
     })
     .state("board.playingBoard", {
         url: "",

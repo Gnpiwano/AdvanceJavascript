@@ -3,7 +3,6 @@ module.exports = function(dataService, sharedService, authService) {
     var _th = this;
     
     this.getGame = function(id, completionHandler ) {
-        console.log("GetGame1");
         if( completionHandler != undefined) {           
             dataService.getData("/Games/"+id, completionHandler )
         } else {
@@ -38,27 +37,24 @@ module.exports = function(dataService, sharedService, authService) {
 
    var setGames = function(response) {
     for(i = 0; i < response.data.length ; i++ ) {
-        if(response.data[i].state != "closed") {
-            sharedService.openGames.push(response.data[i]);
-        } else {
-            sharedService.closedGames.push(response.data[i]);
-        }
+        var game = response.data[i];
+        game.createName = game.createdBy._id;
+
+        sharedService.currentGames.push(game);
+
     }
-    sharedService.currentGames = sharedService.openGames;
     sharedService.loading = false;
        
-    localStorage.setItem("openGameslist", JSON.stringify(sharedService.openGames));
-    localStorage.setItem("closedGameslist",JSON.stringify(sharedService.closedGames));
-       
-    console.log(response.data);
+    //localStorage.setItem("gameslist", JSON.stringify(sharedService.currentGames));
+
+        console.log(authService.login.username)
+        console.log(response.data);
    }
     
     this.getAllGames = function() {
-        var opengames = localStorage.getItem("openGameslist");
-        var closedgames = localStorage.getItem("closedGameslist");
-        
-        console.log(JSON.parse(opengames));
-        console.log(JSON.parse(closedgames));
+        // var gamesInStorage = localStorage.getItem("gameslist");
+        //
+        // console.log(JSON.parse(gamesInStorage));
         
 //        if(opengames != undefined) {
 //            sharedService.openGames = JSON.parse(opengames);

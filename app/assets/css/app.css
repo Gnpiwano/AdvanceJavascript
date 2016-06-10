@@ -33,3 +33,7 @@ gameboard {
     width: 64px;
     position: absolute;
 }
+
+.playerCard:hover {
+    background-color: #2196f3;
+}

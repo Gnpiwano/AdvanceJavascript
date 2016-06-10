@@ -1,8 +1,6 @@
 module.exports = function() {
-    
-    this.openGames = [];
-    this.closedGames = [];
 
+    this.currentGames = [];
     this.currentGame = {};
     this.currentGametiles = [];
     this.currentMatchingGameTiles = [];

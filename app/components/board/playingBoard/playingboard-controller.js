@@ -4,9 +4,6 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
     var gameId = $stateParams.boardId;
     var _th = this;
 
-    sharedService.currentGame = null;
-    sharedService.currentMatchingGameTiles = null;
-    sharedService.currentGametiles = null;
     var getData = function() {
 
         if(gameId !== undefined) {
@@ -34,6 +31,9 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
     
     var setupboard = function() {
         if(sharedService.currentMatchingGameTiles != null && sharedService.currentGame != null && sharedService.currentGametiles != null) {
+            console.log("Matching Game Tiles",sharedService.currentMatchingGameTiles);
+            console.log("Current Game",sharedService.currentGame);
+            console.log("current Game tiles",sharedService.currentGametiles);
             setTiles(sharedService.currentGametiles, sharedService.currentMatchingGameTiles);
         }
     }
@@ -62,6 +62,17 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
         })
     }
 
-    getData();
+    if(sharedService.currentGame._id != gameId) {
+        sharedService.currentGame = null;
+        sharedService.currentMatchingGameTiles = null;
+        sharedService.currentGametiles = null;
+        getData();
+    }else {
+        setTimeout(function () {
+            setupboard();
+        }, 500);
+    }
+
+
 
 }
