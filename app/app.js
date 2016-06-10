@@ -8,11 +8,118 @@ require('angular-route/angular-route.min');
 
 //Create app
 var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
-    .directive('tile', function() {
+    .directive('tile', function(sharedService, tileService) {
         return {
             restrict: 'E',
-            templateUrl: 'assets/html/tile.html'
-        };
+            templateUrl: 'assets/html/tile.html',
+            link: function($scope, elem) {
+                elem.bind('click', function() {
+                    var elementId = elem[0].id;
+                    var elementX = elem[0].getAttribute("xas");
+                    var elementY = elem[0].getAttribute("yas");
+                    var elementZ = elem[0].getAttribute("zas");
+
+                    //check of dat de geslecteerde tile al in de array zit.
+                    for(i = 0; i < sharedService.selectedTilesIds.length; i++) {
+
+                       if(sharedService.selectedTilesIds[i].id == elementId) {
+                           console.log("check 2");
+                           //remove id from selectedIds
+                            sharedService.selectedTilesIds.splice(i, (i+1));
+                           //remove class form element.
+                           document.getElementById(elem[0].id).classList.remove("selectedTile");
+                           return
+                       }
+                    }
+                    //add selectedTile class to element && add id to selectedIds
+                    
+                    //check if tile geselecteerd kan worden // if z > niks is.    if x - 1 == niks || x + 1 == niks
+                    var canSelected = true;
+                    var leftNeighbour = false;
+                    var rightNeigbour = false;
+
+                    console.log("x:"+elementX+ " - y:"+ elementY+ " - z:"+ elementZ);
+
+                    for(i = 0; i < sharedService.currentGametiles.length; i++) {
+                        var tile = sharedService.currentGametiles[i];
+
+                        if((tile.xPos + 2) == 5) {
+                            console.log("otherTile x:" +tile.xPos, " - y:" + tile.yPos);
+                        }
+
+                        // er ligt een tegel bovenop de gene die je wil selecteren.
+
+                        if(elementX == tile.xPos || elementX == (tile.xPos -1) || elementX == (tile.xPos +1) ) {
+                            if(elementY == tile.yPos || elementY == (tile.yPos -1) || elementY == (tile.yPos +1) ) {
+                                if(tile.zPos > elementZ) {
+                                    console.log("for loop broken");
+                                    canSelected = false;
+                                    break;
+                                }
+                            }
+                        }
+                        // elementx - 1 exist || elementx + 1 exist
+
+                        if(elementZ == tile.zPos) {
+                            if(elementY == tile.yPos || elementY == (tile.yPos -1) || elementY == (tile.yPos +1)) {
+                                if((tile.xPos - 2) == elementX) {
+                                    console.log("rightNeigbour exist", tile);
+                                    leftNeighbour = true;
+                                }
+                                if((tile.xPos - 1) == elementX) {
+                                    console.log("rightNeigbour exist", tile);
+                                    leftNeighbour = true;
+                                }
+
+                                if((tile.xPos + 2) == elementX) {
+                                    console.log((tile.xPos + 2) +" - "+ elementX);
+                                    console.log("leftNeigbour exist", tile);
+                                    rightNeigbour = true;
+                                }
+                                if((tile.xPos + 1) == elementX) {
+                                    console.log((tile.xPos + 2) +" - "+ elementX);
+                                    console.log("leftNeigbour exist", tile);
+                                    rightNeigbour = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if(leftNeighbour == true && rightNeigbour == true) {
+                        canSelected = false;
+                    }
+                    if(canSelected) {
+                        sharedService.selectedTilesIds.push({
+                            id: elementId,
+                            name: document.getElementById(elementId).classList[0]
+                        });
+
+                        document.getElementById(elem[0].id).className += " selectedTile";
+                    }
+
+                    if(sharedService.selectedTilesIds.length > 1) {
+                        //delete classes of all the selected elements
+                        for(i = 0; i < sharedService.selectedTilesIds.length; i++) {
+                            document.getElementById(sharedService.selectedTilesIds[i].id).classList.remove("selectedTile");
+                        }
+
+                        if(sharedService.selectedTilesIds[0].name == sharedService.selectedTilesIds[1].name) {
+                            document.getElementById(sharedService.selectedTilesIds[1].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[1].id));
+                            document.getElementById(sharedService.selectedTilesIds[0].id).parentElement.removeChild(document.getElementById(sharedService.selectedTilesIds[0].id));
+
+                            tileService.matchTiles(sharedService.selectedTilesIds[0].id, sharedService.selectedTilesIds[1].id);
+                            console.log("IDS " + sharedService.selectedTilesIds[0].id + " - " + sharedService.selectedTilesIds[1].id);
+                        }
+
+                        //reset array met selectedTiles
+                        sharedService.selectedTilesIds = [];
+                    }
+
+                    //console.log( sharedService.currentGametiles );
+                    console.log("selectedTileIds",sharedService.selectedTilesIds);
+                });
+            }
+        }
     }).directive('gameboard', function() {
         return {
             restrict: 'E',
@@ -55,6 +162,9 @@ app.service("authService", authService);
 
 var menuService = require('./shared/menu-service');
 app.service("menuService", menuService);
+
+var tileService = require('./shared/tile-service');
+app.service("tileService", tileService);
 
 
 

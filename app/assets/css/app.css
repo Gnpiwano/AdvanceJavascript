@@ -4,6 +4,9 @@ gameboard {
     margin-right:auto;
 }
 
+.selectedTile {
+    border: 2px solid dodgerblue;
+}
 
 .bin1 {
     height: 250px;
