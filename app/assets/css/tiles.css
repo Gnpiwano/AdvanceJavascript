@@ -6,17 +6,6 @@ tile {
     height: 88px;
     width: 64px;
     position: fixed;
-    /*background-color: blueviolet;*/
-}
-
-.tileImage {
-    background-image: url(../images/tiles.png);
-    background-size:     cover;
-    background-repeat:   no-repeat;
-
-    height: 88px;
-    width: 64px;
-    /*background-color: blueviolet;*/
 }
 
 /* Bamboo 9 */

@@ -1,0 +1,13 @@
+$StandardTilesColor: #444444;
+
+.titleText {
+  color: $StandardTilesColor;
+}
+
+#filters {
+  @extend .titleText;
+
+  h2 {
+    margin-left: 10px;
+  }
+}

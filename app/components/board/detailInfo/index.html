@@ -2,7 +2,7 @@
 
     <md-divider></md-divider>
         <div layout="column" layout-align="center center">
-            <table style="color: #444444">
+            <table id="defaultGameInfo">
                 <tr>
                     <th>Name: </th>
                     <td></td>
@@ -31,13 +31,13 @@
 
         <md-content flex class='md-padding' layout="row" >
             <div layout="column" flex="50">
-                <md-list >
-                    <h2 style="color: #444444"> Players </h2>
+                <md-list id="playerList">
+                    <h2 > Players </h2>
                     <md-list-item class="md-3-line playerCard"   ng-repeat="player in ctrl.players" ng-click="ctrl.setMatchedPlayersTiles(player)">
                         <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
                         <div class="md-list-item-text" layout="row">
                             <div layout="column" >
-                                <h3 style="color: #444444">{{ player.name }}</h3>
+                                <h3>{{ player.name }}</h3>
                             </div>
                             <div flex="10">
                             </div>
@@ -47,14 +47,14 @@
             </div>
 
             <div layout="column" flex="50">
-                <md-list >
-                    <h2 style="color: #444444"> Matched Tiles </h2>
-                    <md-list-item class="md-3-line playerCard"   ng-repeat="tile in ctrl.playerMatchedTiles">
+                <md-list id="tileList">
+                    <h2 class="titleText"> Matched Tiles </h2>
+                    <md-list-item class="md-3-line"   ng-repeat="tile in ctrl.playerMatchedTiles">
                         <div class="tileImage {{tile.tile.suit}}{{tile.tile.name}}"></div>
                         <div class="md-list-item-text" layout="row">
-                            <div layout="column" layout-padding>
-                                <h3 style="color: #444444">Found on: {{ tile.match.foundOn }}</h3>
-                                <h3 style="color: #444444">Name: {{tile.tile.suit}}{{tile.tile.name}}</h3>
+                            <div layout="column" layout-padding class="titleText">
+                                <h3 >Found on: {{ tile.match.foundOn }}</h3>
+                                <h3 >Name: {{tile.tile.suit}}{{tile.tile.name}}</h3>
                             </div>
                             <div flex="10">
                             </div>

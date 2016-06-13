@@ -1,0 +1,11 @@
+$selectedTileBorderColor: #444444;
+
+gameboard {
+  position: fixed;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.selectedTile {
+  border: 2px solid $selectedTileBorderColor;
+}

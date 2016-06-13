@@ -1,0 +1,32 @@
+ol {
+  margin: 100px; }
+
+/* sass testing*/
+/* variables */
+/*----- Start General -----*/
+/* end General*/
+nav {
+  position: fixed;
+  height: 80px; }
+
+nav a {
+  float: left;
+  line-height: 80px; }
+
+/* Things to use*
+ - import
+    Maak verschilende files aan per view deze daarna include in een css file.
+
+ - partials
+    Genereer uiteindelijk maar 1 css file de rest moeten partials zijn.
+
+ - extend / Inheritance
+    Maak vooral veel id aan ipv classes zo kun je die makkelijk nesten.
+
+ - Operators
+    Calculate the sprite images x and y
+
+
+*/
+
+/*# sourceMappingURL=style.css.map */

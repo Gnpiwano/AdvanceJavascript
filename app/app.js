@@ -18,7 +18,7 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute'])
                     var elementX = elem[0].getAttribute("xas");
                     var elementY = elem[0].getAttribute("yas");
                     var elementZ = elem[0].getAttribute("zas");
-
+                    
                     //check of dat de geslecteerde tile al in de array zit.
                     for(i = 0; i < sharedService.selectedTilesIds.length; i++) {
 

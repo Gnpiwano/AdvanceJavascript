@@ -1,0 +1,75 @@
+$tileHeightnormal: 88px;
+$tileWidthnormal: 64px;
+$tileHeight: -88px;
+$tileWidth: 64px;
+
+/* variables */
+$imageUrl: url(../images/tiles.png);
+
+tile {
+  background-image: $imageUrl;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+
+  height: $tileHeightnormal;
+  width: $tileWidthnormal;
+  position: fixed;
+}
+
+/* Bamboo 9 */
+.Bamboo1 { background-position: 0px -0px; }
+.Bamboo2 { background-position: 0px ($tileHeight * 1); }
+.Bamboo3 { background-position: 0px ($tileHeight * 2); }
+.Bamboo4 { background-position: 0px ($tileHeight * 3); }
+.Bamboo5 { background-position: 0px ($tileHeight * 4); }
+.Bamboo6 { background-position: 0px ($tileHeight * 5); }
+.Bamboo7 { background-position: 0px ($tileHeight * 6); }
+.Bamboo8 { background-position: 0px ($tileHeight * 7); }
+.Bamboo9 { background-position: 0px ($tileHeight * 8); }
+
+/* dragon 9 */
+.character1 { background-position: 0px ($tileHeight * 9); }
+.character2 { background-position: 0px ($tileHeight * 10); }
+.character3 { background-position: 0px ($tileHeight * 11); }
+.character4 { background-position: 0px ($tileHeight * 12); }
+.character5 { background-position: 0px ($tileHeight * 13); }
+.character6 { background-position: 0px ($tileHeight * 14);; }
+.character7 { background-position: 0px ($tileHeight * 15); }
+.character8 { background-position: 0px ($tileHeight * 16); }
+.character9 { background-position: 0px ($tileHeight * 17); }
+
+/* circle 9 */
+
+.circle1 { background-position: 0px ($tileHeight * 18);; }
+.circle2 { background-position: 0px ($tileHeight * 19); }
+.circle3 { background-position: 0px ($tileHeight * 20); }
+.circle4 { background-position: 0px ($tileHeight * 21); }
+.circle5 { background-position: 0px ($tileHeight * 22); }
+.circle6 { background-position: 0px ($tileHeight * 23); }
+.circle7 { background-position: 0px ($tileHeight * 24); }
+.circle8 { background-position: 0px ($tileHeight * 25); }
+.circle9 { background-position: 0px ($tileHeight * 26);; }
+
+/* Dragon 3 */
+.dragonGreen {background-position: 0px ($tileHeight * 27); }
+.DragonRed {background-position: 0px ($tileHeight * 28); }
+.dragonWhite {background-position: 0px ($tileHeight * 29); }
+
+/* flowers 4 */
+.FlowerBamboo {background-position: 0px ($tileHeight * 30);}
+.FlowerChrysantememum {background-position: 0px ($tileHeight * 31);}
+.FlowerOrchid {background-position: 0px ($tileHeight * 32);}
+.FlowerPlum {background-position: 0px ($tileHeight * 33);}
+
+/* seasons 4 */
+.SeasonAutumn {background-position: 0px ($tileHeight * 34);}
+.SeasonSpring {background-position: 0px ($tileHeight * 35);}
+.SeasonSummer {background-position: 0px ($tileHeight * 36);}
+.SeasonWinter {background-position: 0px ($tileHeight * 37);}
+
+/* wind 4 */
+.WindWest {background-position: 0px ($tileHeight * 38);}
+.WindNorth {background-position: 0px ($tileHeight * 39);}
+.WindSouth {background-position: 0px ($tileHeight * 40);}
+.WindEast {background-position: 0px ($tileHeight * 41);}
+

@@ -1,0 +1,38 @@
+$tileHeight: 88px;
+$tileWidth: 64px;
+$tileBackgroundImageUrl: url(../images/tiles.png);
+
+$defaultGameInfoTableColor: #ffffff;
+$standardHoverPlayerCardColor: #2196f3;
+
+#defaultGameInfo {
+  @extend .titleText;
+
+  tr {
+    background-color: $defaultGameInfoTableColor ;
+  }
+}
+
+#playerList {
+
+  h2 {
+    @extend  .titleText;
+  }
+}
+
+#tileList {
+  @extend  .titleText;
+
+  .playerCard:hover {
+    background-color: $standardHoverPlayerCardColor;
+  }
+}
+
+.tileImage {
+  background-image: $tileBackgroundImageUrl;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+
+  height: $tileHeight;
+  width: $tileWidth;
+}

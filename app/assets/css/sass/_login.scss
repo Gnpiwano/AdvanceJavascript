@@ -1,0 +1,42 @@
+$standardWhiteTextColor: #ffffff;
+$standardButtonColor: #f5f5f5;
+$standardApplicationColor: #2196f3;
+
+/* variable */
+$loginCardWidth: 40em;
+
+.whiteText {
+  color: $standardWhiteTextColor;
+}
+
+.defaultColorBackground {
+  background-color: $standardApplicationColor;
+}
+
+#loginTopBar {
+  @extend .whiteText;
+
+}
+
+#loginCard {
+
+  width: $loginCardWidth;
+
+  .LoginCard {
+    @extend .whiteText;
+    @extend .defaultColorBackground;
+  }
+
+  h4 {
+    margin: 1em;
+  }
+
+  p {
+    margin: 1em;
+  }
+
+  #cardButtons {
+    background-color: $standardButtonColor;
+  }
+}
+

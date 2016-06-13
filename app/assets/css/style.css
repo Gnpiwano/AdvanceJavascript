@@ -1,0 +1,214 @@
+/* variable */
+.whiteText, #loginTopBar, #loginCard .LoginCard {
+  color: #ffffff; }
+
+.defaultColorBackground, #loginCard .LoginCard {
+  background-color: #2196f3; }
+
+#loginCard {
+  width: 40em; }
+  #loginCard h4 {
+    margin: 1em; }
+  #loginCard p {
+    margin: 1em; }
+  #loginCard #cardButtons {
+    background-color: #f5f5f5; }
+
+gameboard {
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto; }
+
+.selectedTile {
+  border: 2px solid #444444; }
+
+.titleText, #filters, #defaultGameInfo, #playerList h2, #tileList {
+  color: #444444; }
+
+#filters h2 {
+  margin-left: 10px; }
+
+#defaultGameInfo tr {
+  background-color: #ffffff; }
+
+#tileList .playerCard:hover {
+  background-color: #2196f3; }
+
+.tileImage {
+  background-image: url(../images/tiles.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 88px;
+  width: 64px; }
+
+/* variables */
+tile {
+  background-image: url(../images/tiles.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 88px;
+  width: 64px;
+  position: fixed; }
+
+/* Bamboo 9 */
+.Bamboo1 {
+  background-position: 0px -0px; }
+
+.Bamboo2 {
+  background-position: 0px -88px; }
+
+.Bamboo3 {
+  background-position: 0px -176px; }
+
+.Bamboo4 {
+  background-position: 0px -264px; }
+
+.Bamboo5 {
+  background-position: 0px -352px; }
+
+.Bamboo6 {
+  background-position: 0px -440px; }
+
+.Bamboo7 {
+  background-position: 0px -528px; }
+
+.Bamboo8 {
+  background-position: 0px -616px; }
+
+.Bamboo9 {
+  background-position: 0px -704px; }
+
+/* dragon 9 */
+.character1 {
+  background-position: 0px -792px; }
+
+.character2 {
+  background-position: 0px -880px; }
+
+.character3 {
+  background-position: 0px -968px; }
+
+.character4 {
+  background-position: 0px -1056px; }
+
+.character5 {
+  background-position: 0px -1144px; }
+
+.character6 {
+  background-position: 0px -1232px; }
+
+.character7 {
+  background-position: 0px -1320px; }
+
+.character8 {
+  background-position: 0px -1408px; }
+
+.character9 {
+  background-position: 0px -1496px; }
+
+/* circle 9 */
+.circle1 {
+  background-position: 0px -1584px; }
+
+.circle2 {
+  background-position: 0px -1672px; }
+
+.circle3 {
+  background-position: 0px -1760px; }
+
+.circle4 {
+  background-position: 0px -1848px; }
+
+.circle5 {
+  background-position: 0px -1936px; }
+
+.circle6 {
+  background-position: 0px -2024px; }
+
+.circle7 {
+  background-position: 0px -2112px; }
+
+.circle8 {
+  background-position: 0px -2200px; }
+
+.circle9 {
+  background-position: 0px -2288px; }
+
+/* Dragon 3 */
+.dragonGreen {
+  background-position: 0px -2376px; }
+
+.DragonRed {
+  background-position: 0px -2464px; }
+
+.dragonWhite {
+  background-position: 0px -2552px; }
+
+/* flowers 4 */
+.FlowerBamboo {
+  background-position: 0px -2640px; }
+
+.FlowerChrysantememum {
+  background-position: 0px -2728px; }
+
+.FlowerOrchid {
+  background-position: 0px -2816px; }
+
+.FlowerPlum {
+  background-position: 0px -2904px; }
+
+/* seasons 4 */
+.SeasonAutumn {
+  background-position: 0px -2992px; }
+
+.SeasonSpring {
+  background-position: 0px -3080px; }
+
+.SeasonSummer {
+  background-position: 0px -3168px; }
+
+.SeasonWinter {
+  background-position: 0px -3256px; }
+
+/* wind 4 */
+.WindWest {
+  background-position: 0px -3344px; }
+
+.WindNorth {
+  background-position: 0px -3432px; }
+
+.WindSouth {
+  background-position: 0px -3520px; }
+
+.WindEast {
+  background-position: 0px -3608px; }
+
+/* sass testing*/
+/* variables */
+/*----- Start General -----*/
+/* end General*/
+nav {
+  position: fixed;
+  height: 80px; }
+
+nav a {
+  float: left;
+  line-height: 80px; }
+
+/* Things to use*
+ - import
+    Maak verschilende files aan per view deze daarna include in een css file.
+
+ - partials
+    Genereer uiteindelijk maar 1 css file de rest moeten partials zijn.
+
+ - extend / Inheritance
+    Maak vooral veel id aan ipv classes zo kun je die makkelijk nesten.
+
+ - Operators
+    Calculate the sprite images x and y
+
+
+*/
+
+/*# sourceMappingURL=style.css.map */
