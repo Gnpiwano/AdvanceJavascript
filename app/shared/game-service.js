@@ -13,30 +13,30 @@ module.exports = function(dataService, sharedService, authService) {
         }
     }
     
-    this.createGame = function(game) {
-        dataService.postData("/Games", game);
-        //_th.getAllGames();
+    this.createGame = function(game, completionHandler) {
+        dataService.postData("/Games", game, completionHandler);
     }
     
     this.getTilesFromGame = function(id, completionHandler) {
         dataService.getData("/Games/"+id+"/Tiles", completionHandler)
     }
     
-    this.joinGame = function(game) {
+    this.joinGame = function(game, completionHandler) {
         var player = {
             "name" : authService.login.username
         }
         game.players.push(player);
-        dataService.postData("/Games/" + game._id + "/Players");
+        dataService.postData("/Games/" + game._id + "/Players", completionHandler);
     }
     
-    this.startGame = function(gameId) {
+    this.startGame = function(gameId, completionHandler) {
         console.log("game-service startgame testing url:", "/Games/"+gameId+"/Start");
-        dataService.postData("/Games/"+gameId+"/Start");
+        dataService.postData("/Games/"+gameId+"/Start", completionHandler);
     }
 
    var setGames = function(response) {
        sharedService.currentGames = [];
+       console.log("Games:",response.data)
     for(i = 0; i < response.data.length ; i++ ) {
         var game = response.data[i];
         game.createName = game.createdBy._id;
@@ -44,23 +44,9 @@ module.exports = function(dataService, sharedService, authService) {
         sharedService.currentGames.push(game);
     }
     sharedService.loading = false;
-    //localStorage.setItem("gameslist", JSON.stringify(sharedService.currentGames));
    }
     
     this.getAllGames = function() {
-        // var gamesInStorage = localStorage.getItem("gameslist");
-        //
-        // console.log(JSON.parse(gamesInStorage));
-        
-//        if(opengames != undefined) {
-//            sharedService.openGames = JSON.parse(opengames);
-//            sharedService.currentGames = sharedService.openGames;
-//            sharedService.loading = false;
-//        }
-//        if(closedgames != undefined) {
-//            sharedService.closedGames = JSON.parse(closedgames);
-//        }
-        
         dataService.getData("/Games", setGames );
     }
 }

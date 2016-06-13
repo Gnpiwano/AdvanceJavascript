@@ -28,6 +28,12 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             {name : "Shanghai"}
         ];
 
+        this.goToListItem = function(game) {
+            if(game.state != 'open') {
+                $state.go('board', {boardId: game._id });
+            }
+        }
+
         this.changePlayingState = function (state) {
             this.listState = state;
         }
@@ -41,9 +47,13 @@ module.exports = function($scope, $location, menuService, authService, gameServi
         }
         
         this.createNewGame = function(game) {
-            console.log("CreateNewGame");
-            gameService.createGame(game);
-            _th.showNewGame = false;
+            sharedService.currentGames = [];
+            sharedService.loading = true;
+             gameService.createGame(game, _th.reloadDataCompletionHandler );
+             _th.showNewGame = false;
+        }
+
+        this.reloadDataCompletionHandler = function (result) {
             gameService.getAllGames();
         }
     
@@ -55,18 +65,23 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             }
 
         }
-
-
         
         this.canStartGame = function(game) {
-            if(game.createdBy._id == authService.login.username && game.state != "playing") {
+            if(game.createdBy._id == authService.login.username && game.state != "playing" && game.minPlayers <= game.players.length) {
                 return true;
             }
             return false;
         }
         
         this.canJoinGame = function(game) {
-            if( !_th.canStartGame(game) && game.state == "open") {
+            var go = true;
+            game.players.forEach(function (player) {
+               if(player._id == authService.login.username) {
+                   go = false;
+               }
+            });
+
+            if( !_th.canStartGame(game) && game.state == "open" && game.maxPlayers > game.players.length && go) {
                 return true;
             }
             return false;
@@ -74,11 +89,13 @@ module.exports = function($scope, $location, menuService, authService, gameServi
 
         this.joinGame = function(game) {
             console.log("JoinGame");
-            gameService.joinGame(game);
+            sharedService.loading = true;
+            gameService.joinGame(game, _th.reloadDataCompletionHandler);
         }
 
         this.startGame = function(game) {
-            console.log("startGame");
-            gameService.startGame(game._id);
+            game.state = "playing";
+            sharedService.loading = true;
+            gameService.startGame(game._id, _th.reloadDataCompletionHandler);
         }
 }

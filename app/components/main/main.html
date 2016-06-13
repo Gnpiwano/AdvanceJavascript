@@ -47,12 +47,12 @@
                     <md-progress-circular md-mode="indeterminate" md-diameter="128"></md-progress-circular>
                 </div>
             </md-list-item>            
-            <md-list-item class="md-3-line" ng-repeat="game in ctrl.shared.currentGames | filter:{state: ctrl.listState} | filter:{createName: ctrl.gameOwner}">
+            <md-list-item class="md-3-line" ng-repeat="game in ctrl.shared.currentGames | filter:{state: ctrl.listState} | filter:{createName: ctrl.gameOwner} | orderBy: '-startedOn'">
                 <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
                 <div class="md-list-item-text" layout="row">
                     <a></a>
 
-                    <div layout="column" flex ui-sref="board({ boardId: game._id })">
+                    <div layout="column" flex ng-click="ctrl.goToListItem(game)">
                         <h3>{{ game.createdBy.name }}</h3>
                         <h4> {{ game.createdOn }}</h4>
                         <h4> Status:{{ game.state }} min {{ game.minPlayers }} max {{game.maxPlayers}}</h4>

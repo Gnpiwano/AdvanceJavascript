@@ -7,7 +7,7 @@ module.exports = function($http, sharedService) {
         $http.get(baseUrl + urlParameter , _th.config).then(onSucces, _th.logError);
     }
     
-    this.postData = function(urlParameter, dataToSend) {
+    this.postData = function(urlParameter, dataToSend, completionHandler) {
         console.log(_th.config);
         var req = {
             method: 'POST',
@@ -18,12 +18,19 @@ module.exports = function($http, sharedService) {
             },
             data: dataToSend
         }
-        
-        $http(req).then(function(result) {
-            console.info(result)
-        }, function(error) {
-            console.warn(error)
-        });
+
+        if( completionHandler != undefined) {
+            $http(req).then( completionHandler, function(error) {
+                console.warn(error)
+            });
+        } else {
+            $http(req).then(function(result) {
+                console.info(result)
+            }, function(error) {
+                console.warn(error)
+            });
+        }
+
     } 
     
     this.logError = function(error) {
