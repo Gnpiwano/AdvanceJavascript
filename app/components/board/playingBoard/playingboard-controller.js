@@ -20,14 +20,15 @@ module.exports = function($scope, $timeout , gameboardService, sharedService, ti
             tiles.forEach(function (tile) {
                 // remove tile from field.
                 var documentTile = document.getElementById(tile._id);
-                if(documentTile != null) {
-                    tile.parentElement.removeChild(tile);
+                console.log("documentTile :" ,documentTile);
+                if(documentTile != null && documentTile !== undefined) {
+                    var parent = documentTile.parentElement;
+                    parent.removeChild(documentTile);
                 }
 
                 sharedService.currentGametiles.forEach(function (gameboardTile) {
                    if(tile._id == gameboardTile._id) {
                        gameboardTile.matched = true;
-                        console.log("TICK TACK TO");
                        sharedService.currentMatchingGameTiles.push(tile);
                    }
                 });
@@ -40,13 +41,13 @@ module.exports = function($scope, $timeout , gameboardService, sharedService, ti
 
         gameSocket.on('end', function() {
             //alert game is ended en ga terug naar menu.
-            
+            alert("GAME END");
         });
 
     }
 
     var setupBoard = function () {
-        if(tileService.checkIfMatchingIsPossible()) {
+        if(!tileService.checkIfMatchingIsPossible()) {
             alert("there are no matches anymore!");
         }
 

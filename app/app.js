@@ -24,7 +24,11 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute', 'ngRe
                             spectating = false;
                         }
                     });
-                    
+
+                    if(sharedService.currentGame.state == "finished") {
+                        spectating = true;
+                    }
+
                     if(spectating) {
                         return;
                     }
@@ -77,15 +81,13 @@ var app = angular.module('mahjong', ['ngMaterial', 'ui.router', 'ngRoute', 'ngRe
                                 document.getElementById(tileService.selectedTilesIds[0].id).parentElement.removeChild(document.getElementById(tileService.selectedTilesIds[0].id));
                                 tileService.matchTiles(sharedService.currentGame._id ,tileService.selectedTilesIds[0].id, tileService.selectedTilesIds[1].id);
                             }
-
-                            if(tileService.checkIfMatchingIsPossible()) {
-                                alert("there are no matches anymore!");
-                            }
-
                             //reset array met selectedTiles
-
                             tileService.selectedTilesIds = [];
                         }
+
+                    if(!tileService.checkIfMatchingIsPossible()) {
+                        alert("there are no matches anymore!");
+                    }
                 });
             }
         }

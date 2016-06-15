@@ -23,6 +23,7 @@ module.exports = function(gameService, tileService) {
     var getGame = function (gameId) {
         gameService.getGame(gameId, function (result) {
             _th.game = result.data;
+            checkForCompletion();
         })
     }
 

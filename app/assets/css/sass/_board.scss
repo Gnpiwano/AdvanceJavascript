@@ -1,4 +1,5 @@
 $selectedTileBorderColor: #444444;
+$possibleMatch: #a3df32;
 
 gameboard {
   position: fixed;
@@ -9,6 +10,11 @@ gameboard {
 .selectedTile {
   border: 2px solid $selectedTileBorderColor;
 }
+
+.possibleMatch {
+  border: 2px solid $possibleMatch;
+}
+
 
 .subGameboardView {
   overflow-y: scroll;

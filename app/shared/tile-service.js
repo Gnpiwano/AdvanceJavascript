@@ -83,29 +83,58 @@ module.exports = function(dataService,sharedService) {
         if(sharedService.currentGametiles !== undefined && sharedService.currentMatchingGameTiles !== undefined) {
 
             var tilesThatCanBeSelected = [];
-            for(i = 0; i < sharedService.currentGametiles.length; i++) {
-                var tile = sharedService.currentGametiles[i];
-                if(_th.checkIfTileCanBeSelectedMajongRules(tile.xPos, tile.yPos, tile.zPos, tile._id)) {
-                    tilesThatCanBeSelected.push(tile);
+
+
+            sharedService.currentGametiles.forEach(function (tile) {
+                var a = document.getElementById(tile._id);
+                if(a != null && a !== undefined) {
+                    if(a.classList.contains("possibleMatch")) {
+                        a.removeClass("possibleMatch");
+                    }
                 }
-            }
 
-            for(i = 0; i < tilesThatCanBeSelected.length; i++) {
+                if(tile.matched != true) {
+                    if(_th.checkIfTileCanBeSelectedMajongRules(tile.xPos, tile.yPos, tile.zPos, tile._id)) {
+                        tilesThatCanBeSelected.push(tile);
+                    }
+                }
 
-                for(b = 0;  b < tilesThatCanBeSelected.length; b++) {
-                    if(tilesThatCanBeSelected[i]._id != tilesThatCanBeSelected[b]._id && tilesThatCanBeSelected[i].tile.suit == tilesThatCanBeSelected[b].tile.suit) {
+            })
 
-                        if(tilesThatCanBeSelected[i].tile.matchesWholeSuit == true) {
-                            return true;
-                        } else {
-                            if(tilesThatCanBeSelected[i].tile.name == tilesThatCanBeSelected[b].tile.name) {
-                                return true;
+            console.log("Tiles that still can be matched", tilesThatCanBeSelected);
+            var tilestiles = [];
+
+            tilesThatCanBeSelected.forEach(function (tile1) {
+                tilesThatCanBeSelected.forEach(function (tile2) {
+                    if(tile1.tile.matchesWholeSuit == true) {
+                        if(tile1.tile.suit == tile2.tile.suit) {
+                            if(tile1._id != tile2._id) {
+                                var a = document.getElementById(tile1._id);
+                                if(a != null && a !== undefined) {
+                                    a.className += " possibleMatch";
+                                }
+                                tilestiles.push(tile1);
+                            }
+                        }
+                    } else {
+                        if(tile1.tile.suit == tile2.tile.suit && tile1.tile.name == tile2.tile.name) {
+                            if(tile1._id != tile2._id) {
+                                var a = document.getElementById(tile1._id);
+                                if(a != null && a !== undefined) {
+                                    a.className += " possibleMatch";
+                                }
+                                tilestiles.push(tile1);
                             }
                         }
                     }
-                }
-            }
+                });
+            });
 
+            if(tilestiles.length > 0) {
+                console.log("All tiles that still can be matched",tilestiles);
+                return  true;
+            }
+            return false;
         }
         return false;
     }

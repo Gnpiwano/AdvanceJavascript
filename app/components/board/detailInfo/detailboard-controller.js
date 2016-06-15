@@ -2,15 +2,27 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
 
     var gameId = $stateParams.boardId;
     var _th = this;
-
+    this.shared = sharedService;
     this.players = sharedService.currentGame.players;
     this.playerMatchedTiles = [];
     this.currentGame = sharedService.currentGame;
 
-    this.setMatchedPlayersTiles = function (player) {
-         _th.playerMatchedTiles = [];
+    this.playerId = {};
+    
+    this.init = function () {
+        sharedService.currentMatchingGameTiles.forEach(function (tile) {
+            tile.matchByPlayerId = tile.match.foundBy;
+        });
+    }
 
-        _th.playerMatchedTiles = sharedService.currentMatchingGameTiles;
+    this.setMatchedPlayersTiles = function (player) {
+        _th.playerId = player._id;
+        
+        //  _th.playerMatchedTiles = [];
+        //
+        // console.log("sharedService.currentMatchingGameTiles", sharedService.currentMatchingGameTiles);
+        // console.log("player", player);
+        // _th.playerMatchedTiles = sharedService.currentMatchingGameTiles;
 
         // console.log("ActionFor CurrentMatching Game Tiles", sharedService.currentMatchingGameTiles);
         //
