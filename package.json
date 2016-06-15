@@ -4,7 +4,7 @@
   "description": "advance javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma-config.js"
   },
   "author": "",
   "license": "ISC",
@@ -34,8 +34,12 @@
     "karma-coverage": "^0.5.5",
     "karma-firefox-launcher": "^0.1.7",
     "karma-mocha": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3"
+  },
+  "dependencies": {
+    "grunt": "^1.0.1"
   }
 }

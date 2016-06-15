@@ -89,13 +89,18 @@ module.exports = function($scope, $location, menuService, authService, gameServi
 
         this.joinGame = function(game) {
             console.log("JoinGame");
-            sharedService.loading = true;
+            game.players.push(
+                {
+                    _id: authService.login.username
+                }
+            );
+            //sharedService.loading = true;
             gameService.joinGame(game, _th.reloadDataCompletionHandler);
         }
 
         this.startGame = function(game) {
             game.state = "playing";
-            sharedService.loading = true;
+            // sharedService.loading = true;
             gameService.startGame(game._id, _th.reloadDataCompletionHandler);
         }
 }

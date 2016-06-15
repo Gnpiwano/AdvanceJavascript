@@ -33,7 +33,7 @@
             <div layout="column" flex="50">
                 <md-list id="playerList">
                     <h2 > Players </h2>
-                    <md-list-item class="md-3-line playerCard"   ng-repeat="player in ctrl.players" ng-click="ctrl.setMatchedPlayersTiles(player)">
+                    <md-list-item class="md-3-line playerCard"   ng-repeat="player in ctrl.players track by $index" ng-click="ctrl.setMatchedPlayersTiles(player)">
                         <md-icon class="md-avatar-icon"><i class="material-icons">person</i></md-icon>
                         <div class="md-list-item-text" layout="row">
                             <div layout="column" >

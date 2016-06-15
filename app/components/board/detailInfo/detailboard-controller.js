@@ -8,14 +8,21 @@ module.exports = function($scope, menuService, gameService, sharedService, tileS
     this.currentGame = sharedService.currentGame;
 
     this.setMatchedPlayersTiles = function (player) {
-        console.log(this.playerMatchedTiles);
-        this.playerMatchedTiles = [];
-        for(i = 0; i < sharedService.currentMatchingGameTiles.length; i++) {
-            if(sharedService.currentMatchingGameTiles[i].match.foundBy == player._id) {
-                this.playerMatchedTiles.push(sharedService.currentMatchingGameTiles[i]);
-            }
-        }
+         _th.playerMatchedTiles = [];
+
+        _th.playerMatchedTiles = sharedService.currentMatchingGameTiles;
+
+        // console.log("ActionFor CurrentMatching Game Tiles", sharedService.currentMatchingGameTiles);
+        //
+        // sharedService.currentMatchingGameTiles.forEach(function (tile) {
+        //         console.log("Before Things Focked up:", tile._id +" - player Id:"+player._id);
+        //         if(tile.match.foundBy == player._id) {
+        //             _th.playerMatchedTiles.push(tile);
+        //         }
+        // });
+
+        // for(i = 0; i < sharedService.currentMatchingGameTiles.length; i++) {
+
+        // }
     }
-
-
 }

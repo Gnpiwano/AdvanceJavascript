@@ -1,41 +1,32 @@
-module.exports = function($scope, menuService, gameService, sharedService, $compile, $element, $stateParams) {
-    
-    $scope.menu = menuService;
-    
+module.exports = function($scope, menuService, gameboardService, authService, gameService, sharedService, $compile, $element, $stateParams) {
+
+    this.dataLoaded = false;
+    this.shared = sharedService;
     var gameId = $stateParams.boardId;
     var _th = this;
-    
-    var getData = function() {
-        console.log("Ja data wordt geladen. ");
-        console.log(sharedService.currentGame);
 
-        if(gameId === undefined) {
-            console.log("WTFFFF")
-        }
-        console.log("gameId:",gameId);
-        if(gameId !== undefined) {
-            console.log("testing");
-            gameService.getGame(gameId);
-            gameService.getTilesFromGame(gameId, getTilesCompletionHandler);
+    this.init = function () {
+        authService.checkIfUserIsLogedIn();
+
+        sharedService.loading = true;
+        if(sharedService.currentGame._id != gameId) {
+            gameboardService.getGameBoard(gameId, function (game, gameTiles, matchedTiles) {
+                sharedService.loading = false;
+                sharedService.currentGame = game;
+                sharedService.currentGametiles = gameTiles;
+                sharedService.currentMatchingGameTiles = matchedTiles;
+                _th.dataLoaded = true;
+            });
+
+        }else {
+            sharedService.loading = false;
+            _th.dataLoaded = true;
         }
     }
 
     var getTilesCompletionHandler = function(response) {
         console.log("Response Data: ", response);
-        setTiles(response.data);
+
     }
 
-    var setTiles = function(tiles) {
-        sharedService.currentGametiles = tiles;
-        tiles.forEach(function(tile) {
-            var marginLeft = tile.xPos * 28;
-            var marginTop = tile.yPos * 40;
-            var z_index = ((tile.zPos * 100) - tile.xPos + tile.yPos);
-            var id = tile._id;
-
-            $element.find('gameboard').append($compile('<tile xas="'+tile.xPos+'" yas="'+tile.yPos+'" zas="'+tile.zPos+'" id="' + id +'" class="'+tile.tile.suit + tile.tile.name+'" style="z-index:'+z_index+'; margin-left:'+marginLeft+'px; margin-top:'+marginTop+'px;"></tile>')($scope));
-        })
-    }
-
-    getData();
 }

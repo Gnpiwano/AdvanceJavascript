@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app\shared\auth-service.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/shared/</a> auth-service.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">38.24% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>13/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">21.43% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>3/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>3/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">39.39% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>13/33</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = function(dataService) {
+    
+    var _th = this;
+    
+    this.login = {
+        username: "",
+        token: ""
+    }
+    
+    this.checkIfUserIsLogedIn = function() {
+        _th.getLoginFromCookie();
+        _th.getLoginFromURL();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(_th.login.username == "") {
+<span class="cstat-no" title="statement not covered" >            return false;    </span>
+        } else {
+            return true;
+        }
+    }
+    
+    this.getLoginFromURL = <span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("GetLoginFrom uRL");</span>
+        
+<span class="cstat-no" title="statement not covered" >        if(_th.getUrlParams("username", window.location.href) != null &amp;&amp; _th.getUrlParams("token", window.location.href) != null) {</span>
+<span class="cstat-no" title="statement not covered" >            console.log("GetLoginFrom URL in IF");</span>
+            
+<span class="cstat-no" title="statement not covered" >            _th.login.username = _th.getUrlParams("username", window.location.href);</span>
+<span class="cstat-no" title="statement not covered" >            _th.login.token = _th.getUrlParams("token", window.location.href);</span>
+<span class="cstat-no" title="statement not covered" >             console.log("GetLoginFromURL Login credentials: ", _th.login );</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            dataService.setCookie("x-username", _th.login.username, 5);</span>
+<span class="cstat-no" title="statement not covered" >            dataService.setCookie("x-token", _th.login.token, 5);</span>
+            
+            //document.cookie = "x-username=" + _th.login.username +";" + "x-token=" +_th.login.token+";";
+<span class="cstat-no" title="statement not covered" >            console.log("GetLoginFromURL in cookie", document.cookie);</span>
+        }
+    }
+    
+    this.getLoginFromCookie = function() {
+        console.log("GetLoginFrom Cookie");
+        
+        <span class="missing-if-branch" title="if path not taken" >I</span>if(dataService.getCookie("x-token") != "" &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >dataService.getCookie("x-username") != "")</span> {
+<span class="cstat-no" title="statement not covered" >        console.log("getLoginFromCookie whitin if");</span>
+            
+<span class="cstat-no" title="statement not covered" >            _th.login.username = dataService.getCookie("x-username");</span>
+<span class="cstat-no" title="statement not covered" >            _th.login.token = dataService.getCookie("x-token");</span>
+            
+<span class="cstat-no" title="statement not covered" >        console.log("Getloginformcookie", document.cookie);</span>
+        }
+    }
+    this.getUrlParams = <span class="fstat-no" title="function not covered" >function(name, url) {</span>
+<span class="cstat-no" title="statement not covered" >          if (!url) <span class="cstat-no" title="statement not covered" >url = location.href;</span></span>
+<span class="cstat-no" title="statement not covered" >          name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");</span>
+<span class="cstat-no" title="statement not covered" >          var regexS = "[\\?&amp;]"+name+"=([^&amp;#]*)";</span>
+<span class="cstat-no" title="statement not covered" >          var regex = new RegExp( regexS );</span>
+<span class="cstat-no" title="statement not covered" >          var results = regex.exec( url );</span>
+<span class="cstat-no" title="statement not covered" >          return results == null ? null : results[1];</span>
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 15 2016 15:36:55 GMT+0200 (W. Europe Daylight Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

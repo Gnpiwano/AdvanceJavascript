@@ -22,16 +22,12 @@ module.exports = function(dataService, sharedService, authService) {
     }
     
     this.joinGame = function(game, completionHandler) {
-        var player = {
-            "name" : authService.login.username
-        }
-        game.players.push(player);
-        dataService.postData("/Games/" + game._id + "/Players", completionHandler);
+        dataService.postData("/Games/" + game._id + "/Players");
     }
     
     this.startGame = function(gameId, completionHandler) {
         console.log("game-service startgame testing url:", "/Games/"+gameId+"/Start");
-        dataService.postData("/Games/"+gameId+"/Start", completionHandler);
+        dataService.postData("/Games/"+gameId+"/Start");
     }
 
    var setGames = function(response) {

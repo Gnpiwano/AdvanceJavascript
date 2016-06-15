@@ -1,11 +1,17 @@
-<div layout='column' layout-fill>
+<div layout='column' layout-fill ng-init="ctrl.init()">
     <div ng-include="'assets/html/settings_menu.html'"></div>
 
-    <md-button class="md-primary" ui-sref=".playingBoard" ui-sref-active="active">playingBoard</md-button>
-    <md-button class="md-primary" ui-sref=".detailedInfo" ui-sref-active="active">DetailInfo</md-button>
-    
-    <div ui-view flex></div>
+    <div ng-show="ctrl.dataLoaded" layout="column">
+        <md-button class="md-primary" ui-sref=".playingBoard" ui-sref-active="active">playingBoard</md-button>
+        <md-button class="md-primary" ui-sref=".detailedInfo">DetailInfo</md-button>
+    </div>
 
-    <!--<gameboard></gameboard>-->
+    <md-list-item class="md-3-line" ng-show="ctrl.shared.loading" layout="row" layout-align="center center">
+        <div >
+            <md-progress-circular md-mode="indeterminate" md-diameter="128"></md-progress-circular>
+        </div>
+    </md-list-item>
+    
+    <div ui-view></div>
     
 </div>

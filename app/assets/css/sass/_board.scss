@@ -9,3 +9,8 @@ gameboard {
 .selectedTile {
   border: 2px solid $selectedTileBorderColor;
 }
+
+.subGameboardView {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

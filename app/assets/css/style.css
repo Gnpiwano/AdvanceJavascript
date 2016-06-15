@@ -22,6 +22,10 @@ gameboard {
 .selectedTile {
   border: 2px solid #444444; }
 
+.subGameboardView {
+  overflow-y: scroll;
+  overflow-x: hidden; }
+
 .titleText, #filters, #defaultGameInfo, #playerList h2, #tileList {
   color: #444444; }
 
