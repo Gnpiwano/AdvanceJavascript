@@ -18,6 +18,13 @@ $loginCardWidth: 40em;
 
 }
 
+@mixin border-margin($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
 #loginCard {
 
   width: $loginCardWidth;
@@ -28,11 +35,11 @@ $loginCardWidth: 40em;
   }
 
   h4 {
-    margin: 1em;
+    @include border-margin(1em);
   }
 
   p {
-    margin: 1em;
+    @include border-margin(1em);
   }
 
   #cardButtons {

@@ -5,6 +5,13 @@ module.exports = function($scope, menuService, gameboardService, authService, ga
     var gameId = $stateParams.boardId;
     var _th = this;
 
+    var cssFiles = [
+        "./../assets/css/tiles2.css",
+        ""
+    ];
+
+    this.cssFile = "";
+
     this.init = function () {
         authService.checkIfUserIsLogedIn();
 
@@ -29,4 +36,13 @@ module.exports = function($scope, menuService, gameboardService, authService, ga
 
     }
 
+    this.changeStyle = function () {
+
+        if(_th.cssFile == "") {
+            _th.cssFile = "./../assets/css/tiles2.css";
+        }else {
+            _th.cssFile = "";
+        }
+
+    }
 }

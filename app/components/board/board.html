@@ -1,9 +1,13 @@
-<div layout='column' layout-fill ng-init="ctrl.init()">
+<div layout='column' layout-fill ng-init="ctrl.init()" id="gamebackground">
     <div ng-include="'assets/html/settings_menu.html'"></div>
+
+    <!--<link rel="stylesheet" href="./../assets/css/tiles.css"/>-->
+    <link rel="stylesheet" href="{{ ctrl.cssFile }}"/>
 
     <div ng-show="ctrl.dataLoaded" layout="column">
         <md-button class="md-primary" ui-sref=".playingBoard" ui-sref-active="active">playingBoard</md-button>
         <md-button class="md-primary" ui-sref=".detailedInfo">DetailInfo</md-button>
+        <md-button class="md-primary" ng-click="ctrl.changeStyle()">Change Style</md-button>
     </div>
 
     <md-list-item class="md-3-line" ng-show="ctrl.shared.loading" layout="row" >

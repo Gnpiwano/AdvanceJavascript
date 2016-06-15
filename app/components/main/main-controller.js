@@ -103,4 +103,6 @@ module.exports = function($scope, $location, menuService, authService, gameServi
             // sharedService.loading = true;
             gameService.startGame(game._id, _th.reloadDataCompletionHandler);
         }
+
+
 }

@@ -2,7 +2,7 @@ tile {
     background-image: url(../images/tiles.png);
     background-size:     cover;
     background-repeat:   no-repeat;
-    
+    background-color: blue;
     height: 88px;
     width: 64px;
     position: fixed;

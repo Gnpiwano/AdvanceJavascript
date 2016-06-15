@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACd,gBAAgB,EAAE,KAAK",
+"sources": ["sass/tiles2.scss"],
+"names": [],
+"file": "tiles2.css"
+}

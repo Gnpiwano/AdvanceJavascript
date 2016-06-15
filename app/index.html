@@ -12,13 +12,16 @@
 
         <!--<link rel="stylesheet" href="./assets/css/app.css"/>-->
         <!--<link rel="stylesheet" href="./assets/css/tiles.css"/>-->
-        <link rel="stylesheet" href="./assets/css/style.css"/>
+        <link rel="stylesheet" ng-href="./assets/css/style.css"/>
+        <link rel="stylesheet" ng-href="{{ cssFile }}"/>
 
         <script src="./app.js"></script>
+
         <script src="http://mahjongmayhem.herokuapp.com/socket.io/socket.io.js"></script>
 
     </head>   
     <body>
+
         <ui-view></ui-view>
     </body>
 </html>
